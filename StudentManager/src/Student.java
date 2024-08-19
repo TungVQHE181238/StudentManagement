@@ -62,6 +62,8 @@ public class Student {
         System.out.println("Email: " + email);
         System.out.println("GRADES:");
         System.out.println("PRF192: " + grade.PRF192);
+        System.out.println("MAE101: " + grade.MAE101);
+        System.out.println("CSI101: " + grade.CSI101);
         System.out.println("");
     }
 }
