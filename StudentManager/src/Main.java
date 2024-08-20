@@ -58,6 +58,10 @@ public class Main {
                     System.out.println("GRADE:");
                     System.out.print("Grade for PRF192: ");
                     double prf192 = sc.nextDouble();
+                        while(prf192 <=0 && prf192 > 10) {
+                        
+                    }
+                    
                     System.out.print("Grade for MAE101: ");
                     double mae101 = sc.nextDouble();
                     System.out.print("Grade for CSI101: ");
@@ -71,11 +75,64 @@ public class Main {
                     newStu.displayStudent();
                     System.out.println("");
                     break;
-                    
+
                 case 2:
                     sc.nextLine();
-                    
-                    
+
+                    System.out.print("Enter ID of student: ");
+                    String idE = sc.nextLine();
+                    Student editStudent = Student.searchStudent(stuList, idE);
+
+                    if (editStudent != null) {
+                        System.out.println("Found student!");
+                        System.out.print("ID(leave black to keep current): ");
+                        String newId = sc.nextLine();
+
+                        if (!newId.isEmpty()) {
+                            editStudent.id = newId;
+                        }
+                        System.out.print("Name(leave black to keep current): ");
+                        String newName = sc.nextLine();
+                        if (!newName.isEmpty()) {
+                            editStudent.name = newName;
+                        }
+
+                        System.out.print("Email: ");
+                        String newEmail = sc.nextLine();
+                        if (!newEmail.isEmpty()) {
+                            while (!newEmail.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                                System.out.println("Invalid email.Please try again");
+                                System.out.print("Email: ");
+                                newEmail = sc.nextLine();
+                            }
+                            editStudent.email = newEmail;
+                        }
+
+                        System.out.println("GRADE:");
+                        System.out.print("Grade for PRF192(Type -1 to keep current): ");
+                        double newPrf192 = sc.nextDouble();
+                        if (newPrf192 > 0 && newPrf192 <= 10) {
+                            editStudent.grade.PRF192 = newPrf192;
+                        }
+                        
+                        System.out.print("Grade for MAE101(Type -1 to keep current): ");
+                        double newMae101 = sc.nextDouble();
+                        if (newMae101 > 0 && newMae101 <= 10) {
+                            editStudent.grade.MAE101 = newMae101;
+                        }
+                        
+                        System.out.print("Grade for CSI101(Type -1 to keep current): ");
+                        double newCsi101 = sc.nextDouble();
+                        if (newCsi101 > 0 && newCsi101 <= 10) {
+                            editStudent.grade.CSI101 = newCsi101;
+                        }
+                        
+                        System.out.println("Updated your new information: ");
+                        editStudent.displayStudent();
+                    } else {
+                        System.out.println("Not found any student with id: " + idE);
+                    }
+
                     break;
 
                 case 4:
