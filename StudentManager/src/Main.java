@@ -58,15 +58,28 @@ public class Main {
                     System.out.println("GRADE:");
                     System.out.print("Grade for PRF192: ");
                     double prf192 = sc.nextDouble();
-                        while(prf192 <=0 && prf192 > 10) {
-                        
+                        while(prf192 <=0 || prf192 > 10) {
+                         System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
+                         System.out.print("Grade for PRF192: ");
+                         prf192 = sc.nextDouble();
                     }
                     
                     System.out.print("Grade for MAE101: ");
                     double mae101 = sc.nextDouble();
+                    while(mae101 <=0 || mae101 >10){
+                     System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
+                     System.out.print("Grade for MAE101: ");
+                        mae101 = sc.nextDouble();
+                    }
+                    
                     System.out.print("Grade for CSI101: ");
                     double csi101 = sc.nextDouble();
-
+                     while(csi101 <=0 || csi101 >10){
+                     System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
+                     System.out.print("Grade for CSI101: ");
+                        csi101 = sc.nextDouble();
+                    }
+                    
                     Student.Grade grade = new Student().new Grade(prf192, mae101, csi101);
 
                     Student newStu = new Student(id, name, email, grade);
