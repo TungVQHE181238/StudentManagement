@@ -40,6 +40,14 @@ public class Main {
 
                     System.out.print("ID: ");
                     String id = sc.nextLine();
+                    
+                    for(Student student : stuList) {
+                        while(student.id.equals(id)) {
+                            System.out.println("Existed id!");
+                            System.out.print("ID: ");
+                            id = sc.nextLine();
+                        }
+                    }
                     System.out.print("Name: ");
                     String name = sc.nextLine();
 
