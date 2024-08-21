@@ -179,7 +179,7 @@ public class Main {
                     sc.nextLine();
 
                     System.out.print("Enter ID of student: ");
-                    String idD = sc.nextLine();
+                    String idD = sc.nextLine().toUpperCase();
 
                     Student delStu = Student.searchStudent(stuList, idD);
 
@@ -201,7 +201,7 @@ public class Main {
 
                 case 4:
                     System.out.print("Enter ID of student: ");
-                    String idF = sc.next();
+                    String idF = sc.next().toUpperCase();
                     Student studentFound = Student.searchStudent(stuList, idF);
 
                     if (studentFound != null) {
@@ -220,7 +220,7 @@ public class Main {
 
                 case 6:
                     System.out.print("Enter ID of student: ");
-                    String idGPA = sc.next();
+                    String idGPA = sc.next().toUpperCase();
                     Student studentGPA = Student.searchStudent(stuList, idGPA);
 
                     if (studentGPA != null) {

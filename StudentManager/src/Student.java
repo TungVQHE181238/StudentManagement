@@ -52,9 +52,9 @@ public class Student {
     public void scholarship(double calGPA) {
         if (calGPA >= 8 && calGPA <= 10) {
             System.out.println("Student.scholarship 100%");
-        } else if (calGPA >= 6 && calGPA <= 7) {
+        } else if (calGPA >= 6.0 && calGPA <= 7.9) {
             System.out.println("Student.scholarship 50%");
-        } else if (calGPA >= 5 && calGPA <= 6) {
+        } else if (calGPA >= 5 && calGPA <= 5.9) {
             System.out.println("Student.scholarship 30%");
         } else {
             System.out.println("Student.scholarship 0%");
