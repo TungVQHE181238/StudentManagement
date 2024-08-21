@@ -145,9 +145,30 @@ public class Main {
                     } else {
                         System.out.println("Not found any student with id: " + idE);
                     }
-
                     break;
 
+                case 3:
+                    sc.nextLine();
+                    
+                    System.out.print("Enter ID of student: "); String idD = sc.nextLine();
+                    
+                    Student delStu = Student.searchStudent(stuList, idD);
+                    
+                    if (delStu != null) {
+                        System.out.println("Found student with id " + idD + ": ");
+                        delStu.displayStudent();
+                        System.out.print("You want to delete student? (Y/N): "); String delChoice = sc.nextLine();
+                        if(delChoice.equals("Y")) {
+                            stuList.remove(delStu);
+                            System.out.println("Deleted student with id " + idD);
+                        } else {
+                            System.out.println("Seem you changed your mind");
+                        }
+                    } else {
+                        System.out.println("Not found student with id " + idD + " to delete.");
+                    }
+                    break;
+                    
                 case 4:
                     System.out.print("Enter ID of student: ");
                     String idF = sc.next();
