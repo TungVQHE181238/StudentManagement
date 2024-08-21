@@ -61,7 +61,7 @@ public class Student {
         }
     }
 
-    public void exportStudentListToFile(List<Student> students, String fileName) throws IOException {
+    public static Student exportStudentListToFile(List<Student> students, String fileName) throws IOException {
 
         try (FileWriter writer = new FileWriter(fileName)) {
             for (Student student : students) {
@@ -70,6 +70,7 @@ public class Student {
             writer.flush();
             System.out.println("Student list exported successfully to " + fileName);
         }
+        return null;
     }
 
     public static Student searchStudent(List<Student> students, String id) {
@@ -91,4 +92,28 @@ public class Student {
         System.out.println("CSI101: " + grade.CSI101);
         System.out.println("");
     }
+    
+    public static void displayTop3Student(List<Student> students) {
+        Student[] top3 = new Student[3];
+        for (Student student : students) {
+            double gpa = student.calGPA(student.grade.PRF192, student.grade.MAE101, student.grade.CSI101);
+            for (int i = 0; i < 3; i++) {
+                if (top3[i] == null || gpa > top3[i].calGPA(student.grade.PRF192, student.grade.MAE101, student.grade.CSI101)) {
+                    System.arraycopy(top3, i, top3, i + 1, 2 - i);
+                    top3[i] = student;
+                    break;
+                }
+            }
+        }
+        for(int i = 0; i < 3; i++) {
+            System.out.println(top3[i]);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return id +"|"+name+"|"+email+"|"+grade.PRF192+"|"+grade.MAE101+"|"+grade.CSI101+"|"+calGPA(grade.PRF192, grade.MAE101, grade.CSI101);
+    }
+    
+    
 }
