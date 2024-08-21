@@ -46,6 +46,19 @@ public class Student {
         
         return gpa;
     }
+
+      public int schorlarShip(double calGPA) {
+        if (calGPA > 8 && calGPA < 10) {
+            System.out.println("Student.schorlarShip 100%");
+        }
+        if (calGPA > 6 && calGPA < 7) {
+            System.out.println("Student.schorlarShip 50%");
+        }
+        if (calGPA > 5 && calGPA < 6) {
+            System.out.println("Student.schorlarShip 30%");
+        }
+        return 0;
+}
     
     public static Student searchStudent(List<Student> students, String id) {
         for (Student student : students) {
