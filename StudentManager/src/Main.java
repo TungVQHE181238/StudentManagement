@@ -39,13 +39,13 @@ public class Main {
                     sc.nextLine();
 
                     System.out.print("ID: ");
-                    String id = sc.nextLine();
-                    
-                    for(Student student : stuList) {
-                        while(student.id.equals(id)) {
+                    String id = sc.nextLine().toUpperCase();
+
+                    for (Student student : stuList) {
+                        while (student.id.equals(id)) {
                             System.out.println("Existed id!");
                             System.out.print("ID: ");
-                            id = sc.nextLine();
+                            id = sc.nextLine().toUpperCase();
                         }
                     }
                     System.out.print("Name: ");
@@ -57,6 +57,13 @@ public class Main {
                         email = sc.nextLine();
 
                         if (email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                            for (Student student : stuList) {
+                                while (student.email.equals(email)) {
+                                    System.out.println("Existed email!");
+                                    System.out.print("Email: ");
+                                    email = sc.nextLine();
+                                }
+                            }
                             break;
                         } else {
                             System.out.println("Invalid email.Please try again");
@@ -66,28 +73,28 @@ public class Main {
                     System.out.println("GRADE:");
                     System.out.print("Grade for PRF192: ");
                     double prf192 = sc.nextDouble();
-                        while(prf192 <=0 || prf192 > 10) {
-                         System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
-                         System.out.print("Grade for PRF192: ");
-                         prf192 = sc.nextDouble();
+                    while (prf192 <= 0 || prf192 > 10) {
+                        System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
+                        System.out.print("Grade for PRF192: ");
+                        prf192 = sc.nextDouble();
                     }
-                    
+
                     System.out.print("Grade for MAE101: ");
                     double mae101 = sc.nextDouble();
-                    while(mae101 <=0 || mae101 >10){
-                     System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
-                     System.out.print("Grade for MAE101: ");
+                    while (mae101 <= 0 || mae101 > 10) {
+                        System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
+                        System.out.print("Grade for MAE101: ");
                         mae101 = sc.nextDouble();
                     }
-                    
+
                     System.out.print("Grade for CSI101: ");
                     double csi101 = sc.nextDouble();
-                     while(csi101 <=0 || csi101 >10){
-                     System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
-                     System.out.print("Grade for CSI101: ");
+                    while (csi101 <= 0 || csi101 > 10) {
+                        System.out.println("Invalid grade. Please enter a grade between 0 and 10.");
+                        System.out.print("Grade for CSI101: ");
                         csi101 = sc.nextDouble();
                     }
-                    
+
                     Student.Grade grade = new Student().new Grade(prf192, mae101, csi101);
 
                     Student newStu = new Student(id, name, email, grade);
@@ -101,17 +108,17 @@ public class Main {
                     sc.nextLine();
 
                     System.out.print("Enter ID of student: ");
-                    String idE = sc.nextLine();
+                    String idE = sc.nextLine().toUpperCase();
                     Student editStudent = Student.searchStudent(stuList, idE);
 
                     if (editStudent != null) {
                         System.out.println("Found student!");
-                        System.out.print("ID(leave black to keep current): ");
-                        String newId = sc.nextLine();
-
-                        if (!newId.isEmpty()) {
-                            editStudent.id = newId;
-                        }
+//                        System.out.print("ID(leave black to keep current): ");
+//                        String newId = sc.nextLine();
+//
+//                        if (!newId.isEmpty()) {
+//                            editStudent.id = newId;
+//                        }
                         System.out.print("Name(leave black to keep current): ");
                         String newName = sc.nextLine();
                         if (!newName.isEmpty()) {
@@ -125,6 +132,13 @@ public class Main {
                                 System.out.println("Invalid email.Please try again");
                                 System.out.print("Email: ");
                                 newEmail = sc.nextLine();
+                                for (Student student : stuList) {
+                                    while (student.email.equals(newEmail)) {
+                                        System.out.println("Existed email!");
+                                        System.out.print("Email: ");
+                                        newEmail = sc.nextLine();
+                                    }
+                                }
                             }
                             editStudent.email = newEmail;
                         }
@@ -135,19 +149,19 @@ public class Main {
                         if (newPrf192 > 0 && newPrf192 <= 10) {
                             editStudent.grade.PRF192 = newPrf192;
                         }
-                        
+
                         System.out.print("Grade for MAE101(Type -1 to keep current): ");
                         double newMae101 = sc.nextDouble();
                         if (newMae101 > 0 && newMae101 <= 10) {
                             editStudent.grade.MAE101 = newMae101;
                         }
-                        
+
                         System.out.print("Grade for CSI101(Type -1 to keep current): ");
                         double newCsi101 = sc.nextDouble();
                         if (newCsi101 > 0 && newCsi101 <= 10) {
                             editStudent.grade.CSI101 = newCsi101;
                         }
-                        
+
                         System.out.println("Updated your new information: ");
                         editStudent.displayStudent();
                     } else {
@@ -157,16 +171,18 @@ public class Main {
 
                 case 3:
                     sc.nextLine();
-                    
-                    System.out.print("Enter ID of student: "); String idD = sc.nextLine();
-                    
+
+                    System.out.print("Enter ID of student: ");
+                    String idD = sc.nextLine();
+
                     Student delStu = Student.searchStudent(stuList, idD);
-                    
+
                     if (delStu != null) {
                         System.out.println("Found student with id " + idD + ": ");
                         delStu.displayStudent();
-                        System.out.print("You want to delete student? (Y/N): "); String delChoice = sc.nextLine();
-                        if(delChoice.equals("Y")) {
+                        System.out.print("You want to delete student? (Y/N): ");
+                        String delChoice = sc.nextLine();
+                        if (delChoice.equals("Y")) {
                             stuList.remove(delStu);
                             System.out.println("Deleted student with id " + idD);
                         } else {
@@ -176,7 +192,7 @@ public class Main {
                         System.out.println("Not found student with id " + idD + " to delete.");
                     }
                     break;
-                    
+
                 case 4:
                     System.out.print("Enter ID of student: ");
                     String idF = sc.next();
