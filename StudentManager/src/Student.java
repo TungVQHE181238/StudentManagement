@@ -97,9 +97,9 @@ public class Student {
         Student[] top3 = new Student[3];
         for (Student student : students) {
             double gpa = student.calGPA(student.grade.PRF192, student.grade.MAE101, student.grade.CSI101);
-            for (int i = 0; i < 3; i++) {
+            for (int i = 2; i >= 0; i--) {
                 if (top3[i] == null || gpa > top3[i].calGPA(student.grade.PRF192, student.grade.MAE101, student.grade.CSI101)) {
-                    System.arraycopy(top3, i, top3, i + 1, 2 - i);
+                    System.arraycopy(top3, i, top3, i - 1, 2 - i);
                     top3[i] = student;
                     break;
                 }
