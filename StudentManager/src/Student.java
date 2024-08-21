@@ -59,6 +59,17 @@ public class Student {
         }
         return 0;
 }
+
+         public void exportStudentListToFile(List<Student> students, String fileName) throws IOException {
+        
+        try (FileWriter writer = new FileWriter(fileName)) {
+            for (Student student : students) {
+                writer.write(student.toString() + "\n");
+            }
+            writer.flush();
+            System.out.println("Student list exported successfully to " + fileName);
+        }
+     
     
     public static Student searchStudent(List<Student> students, String id) {
         for (Student student : students) {
