@@ -54,7 +54,7 @@ public class Student {
             System.out.println("Student.scholarship 100%");
         } else if (calGPA >= 6 && calGPA <= 7) {
             System.out.println("Student.scholarship 50%");
-        }else if (calGPA >= 5 && calGPA <= 6) {
+        } else if (calGPA >= 5 && calGPA <= 6) {
             System.out.println("Student.scholarship 30%");
         } else {
             System.out.println("Student.scholarship 0%");
@@ -92,7 +92,7 @@ public class Student {
         System.out.println("CSI101: " + grade.CSI101);
         System.out.println("");
     }
-    
+
     public static void displayTop3Student(List<Student> students) {
         Student[] top3 = new Student[3];
         for (Student student : students) {
@@ -105,15 +105,16 @@ public class Student {
                 }
             }
         }
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             System.out.println(top3[i]);
         }
     }
 
+ 
+
     @Override
     public String toString() {
-        return id +"|"+name+"|"+email+"|"+grade.PRF192+"|"+grade.MAE101+"|"+grade.CSI101+"|"+calGPA(grade.PRF192, grade.MAE101, grade.CSI101);
+        return id + "|" + name + "|" + email + "|" + grade.PRF192 + "|" + grade.MAE101 + "|" + grade.CSI101 + "|" + calGPA(grade.PRF192, grade.MAE101, grade.CSI101);
     }
-    
-    
+
 }
