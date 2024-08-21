@@ -1,4 +1,6 @@
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 /*
@@ -6,18 +8,19 @@ import java.util.List;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Tunkyo
  */
 public class Student {
+
     protected String id;
     protected String name;
     protected String email;
     protected Grade grade;
-    
+
     class Grade {
+
         protected double PRF192;
         protected double MAE101;
         protected double CSI101;
@@ -27,8 +30,7 @@ public class Student {
             this.MAE101 = MAE101;
             this.CSI101 = CSI101;
         }
-        
-        
+
     }
 
     public Student() {
@@ -40,28 +42,27 @@ public class Student {
         this.email = email;
         this.grade = grade;
     }
-    
+
     public double calGPA(double PRF192, double MAE101, double CSI101) {
-        double gpa = (PRF192 + MAE101 + CSI101)/3;
-        
+        double gpa = (PRF192 + MAE101 + CSI101) / 3;
+
         return gpa;
     }
 
-      public int schorlarShip(double calGPA) {
-        if (calGPA > 8 && calGPA < 10) {
-            System.out.println("Student.schorlarShip 100%");
+    public void scholarship(double calGPA) {
+        if (calGPA >= 8 && calGPA <= 10) {
+            System.out.println("Student.scholarship 100%");
+        } else if (calGPA >= 6 && calGPA <= 7) {
+            System.out.println("Student.scholarship 50%");
+        }else if (calGPA >= 5 && calGPA <= 6) {
+            System.out.println("Student.scholarship 30%");
+        } else {
+            System.out.println("Student.scholarship 0%");
         }
-        if (calGPA > 6 && calGPA < 7) {
-            System.out.println("Student.schorlarShip 50%");
-        }
-        if (calGPA > 5 && calGPA < 6) {
-            System.out.println("Student.schorlarShip 30%");
-        }
-        return 0;
-}
+    }
 
-         public void exportStudentListToFile(List<Student> students, String fileName) throws IOException {
-        
+    public void exportStudentListToFile(List<Student> students, String fileName) throws IOException {
+
         try (FileWriter writer = new FileWriter(fileName)) {
             for (Student student : students) {
                 writer.write(student.toString() + "\n");
@@ -69,17 +70,17 @@ public class Student {
             writer.flush();
             System.out.println("Student list exported successfully to " + fileName);
         }
-     
-    
+    }
+
     public static Student searchStudent(List<Student> students, String id) {
         for (Student student : students) {
-            if(student.id.equals(id)) {
+            if (student.id.equals(id)) {
                 return student;
             }
         }
         return null;
     }
-    
+
     public void displayStudent() {
         System.out.println("ID: " + id);
         System.out.println("Name: " + name);

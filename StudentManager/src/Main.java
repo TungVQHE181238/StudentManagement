@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import jdk.nashorn.internal.parser.Lexer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,7 +28,8 @@ public class Main {
             System.out.println("3. Delete a student");
             System.out.println("4. Search a student");
             System.out.println("5. Display all students");
-            System.out.println("6. Exit the program");
+            System.out.println("6. Check schoolarship of student");
+            System.out.println("7. Exit the program");
             System.out.println("====================================");
             System.out.print("Your option(1,2,3,4): ");
 
@@ -211,8 +211,21 @@ public class Main {
                         student.displayStudent();
                     }
                     break;
-
+                    
                 case 6:
+                    System.out.print("Enter ID of student: ");
+                    String idGPA = sc.next();
+                    Student studentGPA = Student.searchStudent(stuList, idGPA);
+                    
+                    if(studentGPA != null) {
+                        System.out.println("Found student with information:");
+                        studentGPA.displayStudent();
+                        
+                        studentGPA.scholarship(studentGPA.calGPA(studentGPA.grade.PRF192, studentGPA.grade.MAE101, studentGPA.grade.CSI101));
+                    }
+                    break;
+
+                case 7:
                     System.out.println("Exitting...");
                     break;
 
@@ -221,7 +234,7 @@ public class Main {
                     break;
 
             }
-        } while (choice != 6);
+        } while (choice != 7);
 
     }
 }
