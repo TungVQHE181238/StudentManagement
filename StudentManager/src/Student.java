@@ -94,21 +94,28 @@ public class Student {
     }
 
     public static void displayTop3Student(List<Student> students) {
-        Student[] top3 = new Student[3];
-        for (Student student : students) {
-            double gpa = student.calGPA(student.grade.PRF192, student.grade.MAE101, student.grade.CSI101);
-            for (int i = 2; i >= 0; i--) {
-                if (top3[i] == null || gpa > top3[i].calGPA(student.grade.PRF192, student.grade.MAE101, student.grade.CSI101)) {
-                    System.arraycopy(top3, i, top3, i - 1, 2 - i);
-                    top3[i] = student;
-                    break;
+    Student[] top3 = new Student[3];
+
+    for (Student student : students) {
+        double gpa = student.calGPA(student.grade.PRF192, student.grade.MAE101, student.grade.CSI101);
+        for (int i = 0; i < 3; i++) {
+            if (top3[i] == null || gpa > top3[i].calGPA(top3[i].grade.PRF192, top3[i].grade.MAE101, top3[i].grade.CSI101)) {
+                // Shift elements to the right to make space for the new top student
+                for (int j = 2; j > i; j--) {
+                    top3[j] = top3[j - 1];
                 }
+                top3[i] = student;
+                break;
             }
         }
-        for (int i = 0; i < 3; i++) {
-            System.out.println(top3[i]);
+    }
+
+    for (Student s : top3) {
+        if (s != null) {
+            System.out.println(s);
         }
     }
+}
 
  
 
