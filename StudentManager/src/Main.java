@@ -56,7 +56,11 @@ public class Main {
                     }
                     System.out.print("Name: ");
                     String name = sc.nextLine();
-
+                    while (id.isEmpty()) {
+                        System.out.print("Name: ");
+                        id = sc.nextLine();
+                    }
+                    
                     String email;
                     while (true) {
                         System.out.print("Email: ");
